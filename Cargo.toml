@@ -1,0 +1,31 @@
+[package]
+name = "ff-processed-2-clang"
+version = "0.1.0"
+edition = "2021"
+authors = ["Adam Brouwers-Harries <abrouwersharries@mozilla.com>"]
+license = "MIT OR Apache-2.0"
+description = "Convert processed Firefox profiles into clang PGO compatible profiles"
+readme = "README.md"
+
+[lib]
+name="fx_processed_to_clang"
+path="src/lib.rs"
+
+[[bin]]
+name="fx-processed-2-clang"
+path="src/main.rs"
+
+[dependencies]
+wholesym = { git = "https://github.com/AdamHarries/samply.git", branch = "mangled-symbols" }
+bitflags = "2.0"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+debugid = "0.8.0"
+fxhash = "0.2.1"
+fxprof-processed-profile = "0.6.0"
+clap = { version = "4.2.4", features = ["derive"] }
+futures = "0.3.28"
+tokio = {version = "1.28.0", features = ["full"]}
+
+[dev-dependencies]
+assert-json-diff = "2.0.1"
