@@ -310,7 +310,10 @@ impl TableLookup<NativeSymbolTableEntry> for NativeSymbolTable {
             functionSize: self.functionSize[ix],
         }
     }
-    fn iter(&self) -> TableIterator<Self, NativeSymbolTableEntry> where Self : Sized {
+    fn iter(&self) -> TableIterator<Self, NativeSymbolTableEntry>
+    where
+        Self: Sized,
+    {
         TableIterator::from(self)
     }
 }

@@ -28,6 +28,7 @@ pub struct TransposedSample<'a> {
     pub thread_tables: ThreadTables<'a>,
 }
 
+/// Perform a "flattening" operation 
 pub fn transpose_samples<'a>(
     profile: &'a fx_processed_profile::Profile,
 ) -> Vec<TransposedSample<'a>> {

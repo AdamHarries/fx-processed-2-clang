@@ -722,7 +722,6 @@ const JSON_STR: &str = {
 struct Args {
     #[arg(required = true)]
     input_profile: PathBuf,
-
     // #[arg(required = true)]c
     // output_profile: PathBuf,
 }
@@ -731,8 +730,13 @@ struct Args {
 async fn main() {
     let args = Args::parse();
 
-    let raw_json = std::fs::read_to_string(&args.input_profile)
-        .expect(format!("Could not read input file {}", &args.input_profile.display()).as_str());
+    let raw_json = std::fs::read_to_string(&args.input_profile).expect(
+        format!(
+            "Could not read input file {}",
+            &args.input_profile.display()
+        )
+        .as_str(),
+    );
 
     let parsed: Profile = serde_json::from_str(raw_json.as_str()).expect("Error parsing json");
     fx_processed_to_clang::gather_samples(parsed).await;
